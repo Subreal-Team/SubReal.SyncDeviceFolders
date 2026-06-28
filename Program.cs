@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
 using System.IO.Compression;
+using SubRealTeam.ConsoleUtility.Common.Extensions;
 using SubRealTeam.ConsoleUtility.Common.Logging;
 using SyncDeviceFolders;
 
@@ -55,6 +56,7 @@ foreach (var folderSetting in config.FolderSettings)
 
     foreach (var setting in machineSettings)
     {
+        setting.Value.Path = setting.Value.Path.AddTrailingSlash();
         Logger.Info($"Machine sync path is: {machineName}:{setting.Value.Path}");
 
         var syncFolder = Path.Combine(folderSetting.Key, "sync");
@@ -127,7 +129,7 @@ void Sync(string syncFolder, string backupFolder, SyncFolderSetting setting)
                 
     foreach (var file in files)
     {
-        var destFile = Path.Combine(syncFolder, file.Remove(0, setting.Path.Length + 1));
+        var destFile = Path.Combine(syncFolder, file[setting.Path.Length..]);
         if (File.Exists(destFile))
         {
             var fileInfo = new FileInfo(file);
@@ -152,7 +154,12 @@ void Sync(string syncFolder, string backupFolder, SyncFolderSetting setting)
     
     foreach (var syncFile in syncFiles)
     {
-        var destFile = Path.Combine(setting.Path, syncFile.Remove(0, syncFolder.Length + 1));
+        var destFile = Path.Combine(setting.Path, syncFile[(syncFolder.Length + 1)..]);
+        
+        var subDir = Path.GetDirectoryName(destFile);
+        if (subDir != null && subDir != setting.Path && !Directory.Exists(subDir))
+            Directory.CreateDirectory(subDir);
+        
         File.Copy(syncFile, destFile);
     }
             
