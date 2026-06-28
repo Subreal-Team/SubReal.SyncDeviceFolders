@@ -13,4 +13,8 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SubRealTeam.ConsoleUtility.Common" Version="2.1.0.50" />
+    </ItemGroup>
+
 </Project>
