@@ -2,7 +2,7 @@ namespace SyncDeviceFolders;
 
 public class SyncFolderSettings
 {
-    public Dictionary<string, Dictionary<string, SyncFolderSetting>> FolderSettings { get; set; } = new();
+    public Dictionary<string, Dictionary<string, SyncFolderSetting>> FolderSettings { get; set; } = [];
 }
 
 public class SyncFolderSetting
@@ -11,4 +11,5 @@ public class SyncFolderSetting
     public string Process { get; set; } = string.Empty;
     public byte Backups { get; set; } = 3;
     public string Filter { get; set; } = "*.*";
+    public bool Disabled { get; set; }
 }

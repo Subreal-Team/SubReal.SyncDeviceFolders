@@ -5,7 +5,8 @@
         "Path": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\savegames\\GUID\\111",
         "Process": "Process exe name",
         "Backups": 3,
-        "Filter": "*.*"
+        "Filter": "*.*",
+        "Disabled": true
       },
       "LINUX-DEVICENAME": {
         "Path": "/home/deck/.steam/steam/steamapps/compatdata/238750/pfx/drive_c/Program Files (x86)/Ubisoft/Ubisoft Game Launcher/savegames/GUID/111/",

@@ -56,6 +56,12 @@ foreach (var folderSetting in config.FolderSettings)
 
     foreach (var setting in machineSettings)
     {
+        if (setting.Value.Disabled)
+        {
+            Logger.Info($"Setting '{setting.Key}' is disabled. Skip ...");
+            continue;
+        }
+
         setting.Value.Path = setting.Value.Path.AddTrailingSlash();
         Logger.Info($"Machine sync path is: {machineName}:{setting.Value.Path}");
 
@@ -67,10 +73,10 @@ foreach (var folderSetting in config.FolderSettings)
         if (!string.IsNullOrEmpty(setting.Value.Process))
             _ = WaitForProcess(setting.Value.Process, () => Sync(syncFolder, backupFolder, setting.Value));
     }
-
-    Console.WriteLine("Press <ENTER> to exit ...");
-    Console.ReadLine();
 }
+
+Console.WriteLine("Press <ENTER> to exit ...");
+Console.ReadLine();
 
 return;
 
