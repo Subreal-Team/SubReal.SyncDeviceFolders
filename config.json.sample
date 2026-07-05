@@ -3,13 +3,14 @@
     "Folder1": {
       "WIN-DEVICENAME": {
         "Path": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\savegames\\GUID\\111",
-        "Process": "Process exe name",
+        "Process": "Process exe name", // optional - if not specified, the process will not be tracked
         "Backups": 3,
         "Filter": "*.*",
-        "Disabled": true
+        "Disabled": true // optional
       },
       "LINUX-DEVICENAME": {
         "Path": "/home/deck/.steam/steam/steamapps/compatdata/238750/pfx/drive_c/Program Files (x86)/Ubisoft/Ubisoft Game Launcher/savegames/GUID/111/",
+        "Process": "Process exe name", // on a Linux system, the process name is limited to 15 characters
         "Backups": 3,
         "Filter": "*.*"
       }
