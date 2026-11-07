@@ -1,3 +1,3 @@
-dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
-dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
-dotnet publish -c Release -r osx-arm64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
+dotnet publish -c Release -r win-x64 --self-contained true -p:AssemblyName=SyncDeviceFolders.win-x64 -p:PublishSingleFile=true -p:PublishTrimmed=true
+dotnet publish -c Release -r linux-x64 --self-contained true -p:AssemblyName=SyncDeviceFolders.linux-x64 -p:PublishSingleFile=true -p:PublishTrimmed=true
+dotnet publish -c Release -r osx-arm64 --self-contained true -p:AssemblyName=SyncDeviceFolders.osx-arm64 -p:PublishSingleFile=true -p:PublishTrimmed=true

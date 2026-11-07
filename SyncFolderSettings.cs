@@ -7,9 +7,16 @@ public class SyncFolderSettings
 
 public class SyncFolderSetting
 {
+    public const string DefaultFilter = "*.*";
     public string Path { get; set; } = string.Empty;
     public string Process { get; set; } = string.Empty;
     public byte Backups { get; set; } = 3;
-    public string Filter { get; set; } = "*.*";
+    public string Filter { get; set; } = DefaultFilter;
+    public string[] Excludes { get; set; } = [];
     public bool Disabled { get; set; }
+    public bool Watch { get; set; }
+
+    public string[] Extensions => Filter != DefaultFilter 
+        ? Filter.Replace("*.", "").Split(",")
+        : [];
 }

@@ -2,5 +2,6 @@ using System.Text.Json.Serialization;
 
 namespace SyncDeviceFolders;
 
+[JsonSourceGenerationOptions(WriteIndented = true)]
 [JsonSerializable(typeof(SyncFolderSettings))]
-public partial class AppJsonContext : JsonSerializerContext;
+internal partial class AppJsonContext : JsonSerializerContext;
